@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sensor-ingestion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sensor-ingestion
+  template:
+    metadata:
+      labels:
+        app: sensor-ingestion
+    spec:
+      containers:
+      - name: sensor-ingestion
+        image: andresaporito/agrosolutions-agrosolutions-sensor-ingestion:latest
+        ports:
+        - containerPort: 8080
